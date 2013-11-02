@@ -8,6 +8,7 @@ codeMelon.games.AppView = Backbone.View.extend({
         _.bindAll(_this,
             'render',
             'setConstants',
+            'setListeners',
             'drawCircle',
             'drawNumerals',
             'drawCenter',
@@ -17,6 +18,7 @@ codeMelon.games.AppView = Backbone.View.extend({
         );
 
         _this.setConstants(options);
+        _this.setListeners(options);
         _this.render();
     },
 
@@ -25,7 +27,7 @@ codeMelon.games.AppView = Backbone.View.extend({
 
         _this.CONTEXT.font = _this.FONT_HEIGHT + 'px Arial';
         _this.drawClock();
-        setInterval(_this.drawClock, 1000);
+        _this.loop = setInterval(_this.drawClock, 1000);
     },
 
     setConstants: function(options) {
@@ -39,6 +41,35 @@ codeMelon.games.AppView = Backbone.View.extend({
         _this.NUMERAL_SPACING = 20;
         _this.RADIUS = _this.el.width / 2 - _this.MARGIN;
         _this.HAND_RADIUS = _this.RADIUS + _this.NUMERAL_SPACING;
+        _this.SNAPSHOT_BTN_SELECTOR = "#snapshot-btn";
+        _this.SNAPSHOT_IMAGE_SELECTOR = "#snapshot";
+        _this.TAKE_SNAPSHOT_TEXT = "Take snapshot";
+        _this.RETURN_TO_CANVAS_TEXT = "Return to canvas";
+    },
+
+    setListeners: function() {
+        var _this = this,
+            $snapShotBtn = $(_this.SNAPSHOT_BTN_SELECTOR),
+            $snapShot = $(_this.SNAPSHOT_IMAGE_SELECTOR);
+
+        $snapShotBtn.click(function(event) {
+            var dataUrl;
+
+            if ($snapShotBtn.text() === _this.TAKE_SNAPSHOT_TEXT) {
+                dataUrl = _this.el.toDataURL();
+                clearInterval(_this.loop);
+                $snapShot.attr('src', dataUrl);
+                _this.$el.hide();
+                $snapShot.show();
+                $snapShotBtn.text(_this.RETURN_TO_CANVAS_TEXT);
+            }
+            else {
+                $snapShot.hide();
+                _this.$el.show();
+                _this.loop = setInterval(_this.drawClock, 1000);
+                $snapShotBtn.text(_this.TAKE_SNAPSHOT_TEXT);
+            }
+        });
     },
 
     drawCircle: function() {
