@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Grid</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="lib/bootstrap-3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="custom/styles/app.css" rel="stylesheet" media="screen">
+    </head>
+    <body>
+        <div class="container">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-md-1">
+                        <img src="custom/resources/images/melon.png" alt="Melon" width="64" height="64">
+                    </div>
+                    <div class="col-md-11">
+                        <h1>Grid</h1>
+                    </div>
+                </div>
+                <p class="lead"><i>Core HTML5 Canvas</i>, pp. 106ff.</p>
+            </div>
+
+            <div class="page-content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>Basic grid.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <canvas id="game-canvas" width="512" height="512">
+                            Canvas not supported
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="lib/jquery-2.0.3.min.js"></script>
+        <script src="lib/bootstrap-3.0.0/js/bootstrap.min.js"></script>
+        <script src="lib/jquery-ui-1.10.3.min.js"></script>
+        <script src="lib/underscore-1.5.2.min.js"></script>
+        <script src="lib/backbone-1.1.0.min.js"></script>
+        <script src="custom/scripts/views/canvas-view.js"></script>
+        <script src="custom/scripts/app-init.js"></script>
+    </body>
+</html>
