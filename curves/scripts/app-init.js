@@ -1,3 +1,10 @@
-var canvasView = new codeMelon.games.CanvasView({
-        el: $('#game-canvas')
-    }); 
+var app = app || {};
+
+(function(_cg) {
+    app.arcToView = new _cg.ArcToView({
+        el: $('#arc-to')
+    });
+    app.checkboxView = new _cg.CheckboxView({
+        el: $('#checkbox')
+    });
+})(codeMelon.games);

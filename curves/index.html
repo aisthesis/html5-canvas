@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>arcTo</title>
+        <title>Curves</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="lib/bootstrap-3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="../lib/bootstrap-3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="styles/app.css" rel="stylesheet" media="screen">
     </head>
     <body>
@@ -14,10 +14,10 @@
                         <img src="resources/images/melon.png" alt="Melon" width="64" height="64">
                     </div>
                     <div class="col-md-11">
-                        <h1>arcTo()</h1>
+                        <h1>Curves</h1>
                     </div>
                 </div>
-                <p class="lead">How to use the arcTo() method.</p>
+                <p class="lead">Creating various curves. (pp. 127ff.)</p>
             </div>
 
             <div class="page-content">
@@ -28,7 +28,19 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <canvas id="game-canvas" width="1024" height="512">
+                        <canvas id="arc-to" width="512" height="512">
+                            Canvas not supported
+                        </canvas>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>Checkbox using quadratic Bezier curve (pp. 137f.)</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <canvas id="checkbox" width="512" height="512">
                             Canvas not supported
                         </canvas>
                     </div>
@@ -36,12 +48,13 @@
             </div>
         </div>
 
-        <script src="lib/jquery-2.0.3.min.js"></script>
-        <script src="lib/bootstrap-3.0.0/js/bootstrap.min.js"></script>
-        <script src="lib/jquery-ui-1.10.3.min.js"></script>
-        <script src="lib/underscore-1.5.2.min.js"></script>
-        <script src="lib/backbone-1.1.0.min.js"></script>
-        <script src="scripts/views/canvas-view.js"></script>
+        <script src="../lib/jquery-2.0.3.min.js"></script>
+        <script src="../lib/bootstrap-3.0.0/js/bootstrap.min.js"></script>
+        <script src="../lib/jquery-ui-1.10.3.min.js"></script>
+        <script src="../lib/underscore-1.5.2.min.js"></script>
+        <script src="../lib/backbone-1.1.0.min.js"></script>
+        <script src="scripts/views/arc-to-view.js"></script>
+        <script src="scripts/views/checkbox-view.js"></script>
         <script src="scripts/app-init.js"></script>
     </body>
 </html>

@@ -1,3 +1,7 @@
-#game-canvas {
+canvas {
     background: #eee;
+}
+
+#checkbox {
+    background: cornflowerblue;
 }

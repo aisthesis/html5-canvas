@@ -2,7 +2,7 @@ var codeMelon = codeMelon || {};
 codeMelon.games = codeMelon.games || {}; 
 
 (function(_cg) {
-    _cg.CanvasView = Backbone.View.extend({
+    _cg.CheckboxView = Backbone.View.extend({
         initialize: function(options) {
             _.bindAll(this,
                 'render',
