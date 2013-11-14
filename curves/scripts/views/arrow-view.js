@@ -3,7 +3,7 @@ codeMelon.games = codeMelon.games || {};
 
 (function(_cg) {
     "use strict";
-    _cg.CheckboxView = Backbone.View.extend({
+    _cg.ArrowView = Backbone.View.extend({
         initialize: function(options) {
             _.bindAll(this,
                 'render',
