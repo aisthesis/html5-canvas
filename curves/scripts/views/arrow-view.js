@@ -46,13 +46,6 @@ codeMelon.games = codeMelon.games || {};
                         this.ARROW_MARGIN * 2)
                 }
             ];
-            this.START = new Point(120.5, 130);
-            this.ANCHOR1 = new Point(160.6, 150.5);
-            this.CONTROL1 = new Point(150.8, 130);
-            this.ANCHOR2 = new Point(210.5, 160.5);
-            this.CONTROL2 = new Point(190, 250.0);
-            this.ANCHOR3 = new Point(290, 70.5);
-            this.CONTROL3 = new Point(240, 100.5);
         },
 
         drawPoint: function(point, strokeStyle, fillStyle) {
