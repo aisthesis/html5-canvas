@@ -3,6 +3,11 @@ var Point = Object._subClass({
         this.x = x;
         this.y = y;
     },
-    getX: function() { return this.x; },
-    getY: function() { return this.y; }
+
+    distanceTo: function(point) {
+        var diffX = this.x - point.x,
+            diffY = this.y - point.y;
+
+        return Math.sqrt(diffX * diffX + diffY * diffY);
+    }
 });

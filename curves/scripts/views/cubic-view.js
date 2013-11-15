@@ -37,15 +37,15 @@ codeMelon.games = codeMelon.games || {};
         drawBezierCurve: function() {
             this.CONTEXT.strokeStyle = 'blue';
             this.CONTEXT.beginPath();
-            this.CONTEXT.moveTo(this.END_POINTS[0].getX(), 
-                    this.END_POINTS[0].getY());
+            this.CONTEXT.moveTo(this.END_POINTS[0].x, 
+                    this.END_POINTS[0].y);
             this.CONTEXT.bezierCurveTo(
-                    this.CTRL_POINTS[0].getX(),
-                    this.CTRL_POINTS[0].getY(),
-                    this.CTRL_POINTS[1].getX(),
-                    this.CTRL_POINTS[1].getY(),
-                    this.END_POINTS[1].getX(),
-                    this.END_POINTS[1].getY()
+                    this.CTRL_POINTS[0].x,
+                    this.CTRL_POINTS[0].y,
+                    this.CTRL_POINTS[1].x,
+                    this.CTRL_POINTS[1].y,
+                    this.END_POINTS[1].x,
+                    this.END_POINTS[1].y
                 );
             this.CONTEXT.stroke();
         },
@@ -58,7 +58,7 @@ codeMelon.games = codeMelon.games || {};
 
             points.forEach(function(point) {
                 _this.CONTEXT.beginPath();
-                _this.CONTEXT.arc(point.getX(), point.getY(), 5, 0, Math.PI * 2, false);
+                _this.CONTEXT.arc(point.x, point.y, 5, 0, Math.PI * 2, false);
                 _this.CONTEXT.stroke();
                 _this.CONTEXT.fill();
             });

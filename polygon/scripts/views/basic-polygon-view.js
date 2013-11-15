@@ -26,13 +26,13 @@ codeMelon.games = codeMelon.games || {};
             });
 
             polygon.draw(this.CONTEXT);
-            polygon.setLineWidth(2);
-            polygon.setStrokeStyle('red');
+            polygon.lineWidth = 2;
+            polygon.strokeStyle = 'red';
             polygon.stroke(this.CONTEXT);
-            polygon.setRadius(polygon.getRadius() / 2);
-            polygon.setAngle(Math.PI / 8);
+            polygon.radius = polygon.radius / 2;
+            polygon.angle = Math.PI / 8;
             polygon.resetVertices();
-            polygon.setFillStyle('brown');
+            polygon.fillStyle = 'brown';
             polygon.fill(this.CONTEXT);
         },
 

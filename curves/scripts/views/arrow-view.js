@@ -53,7 +53,7 @@ codeMelon.games = codeMelon.games || {};
             this.CONTEXT.fillStyle = fillStyle;
             this.CONTEXT.strokeStyle = strokeStyle;
             this.CONTEXT.lineWidth = 1;
-            this.CONTEXT.arc(point.getX(), point.getY(), this.POINT_RADIUS, 
+            this.CONTEXT.arc(point.x, point.y, this.POINT_RADIUS, 
                     0, Math.PI * 2, false);
             this.CONTEXT.fill();
             this.CONTEXT.stroke();
@@ -78,14 +78,14 @@ codeMelon.games = codeMelon.games || {};
                     this.ARROW_MARGIN * 2);
             this.CONTEXT.lineTo(this.el.width - this.ARROW_MARGIN,
                     this.el.height - this.ARROW_MARGIN * 2);
-            this.CONTEXT.quadraticCurveTo(this.CORNERS[0].ctrl.getX(), this.CORNERS[0].ctrl.getY(),
-                    this.CORNERS[0].anchor.getX(), this.CORNERS[0].anchor.getY());
+            this.CONTEXT.quadraticCurveTo(this.CORNERS[0].ctrl.x, this.CORNERS[0].ctrl.y,
+                    this.CORNERS[0].anchor.x, this.CORNERS[0].anchor.y);
             this.CONTEXT.lineTo(this.ARROW_MARGIN, this.el.height / 2 + this.ARROW_MARGIN);
-            this.CONTEXT.quadraticCurveTo(this.CORNERS[1].ctrl.getX(), this.CORNERS[1].ctrl.getY(),
-                    this.CORNERS[1].anchor.getX(), this.CORNERS[1].anchor.getY());
+            this.CONTEXT.quadraticCurveTo(this.CORNERS[1].ctrl.x, this.CORNERS[1].ctrl.y,
+                    this.CORNERS[1].anchor.x, this.CORNERS[1].anchor.y);
             this.CONTEXT.lineTo(this.el.width - this.ARROW_MARGIN * 2, this.ARROW_MARGIN);
-            this.CONTEXT.quadraticCurveTo(this.CORNERS[2].ctrl.getX(), this.CORNERS[2].ctrl.getY(),
-                    this.CORNERS[2].anchor.getX(), this.CORNERS[2].anchor.getY());
+            this.CONTEXT.quadraticCurveTo(this.CORNERS[2].ctrl.x, this.CORNERS[2].ctrl.y,
+                    this.CORNERS[2].anchor.x, this.CORNERS[2].anchor.y);
             this.CONTEXT.fill();
             this.CONTEXT.stroke();
         }

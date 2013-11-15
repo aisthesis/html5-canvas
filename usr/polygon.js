@@ -18,58 +18,6 @@ var Polygon = Object._subClass({
         this.resetVertices();
     },
 
-    getCenter: function() { 
-        return this.center; 
-    },
-
-    setCenter: function(center) {
-        this.center = center;
-    },
-
-    getSides: function() {
-        return this.sides;
-    },
-
-    getRadius: function() {
-        return this.radius;
-    },
-
-    setRadius: function(radius) {
-        this.radius = radius;
-    },
-
-    getAngle: function() {
-        return angle;
-    },
-
-    setAngle: function(angle) {
-        this.angle = angle;
-    },
-
-    getFillStyle: function() {
-        return this.fillStyle;
-    },
-
-    setFillStyle: function(fillStyle) {
-        this.fillStyle = fillStyle;
-    },
-
-    getStrokeStyle: function() {
-        return this.strokeStyle;
-    },
-
-    setStrokeStyle: function(strokeStyle) {
-        this.strokeStyle = strokeStyle;
-    },
-
-    getLineWidth: function() {
-        return this.lineWidth;
-    },
-
-    setLineWidth: function(lineWidth) {
-        this.lineWidth = lineWidth;
-    },
-
     render: function(context, callback) {
         context.save();
         this.buildPath(context);
@@ -115,23 +63,19 @@ var Polygon = Object._subClass({
 
         this.vertices = [];
         for (i = 0; i < this.sides; i++) {
-            this.vertices.push(new Point(this.center.getX() + this.radius * Math.cos(angle),
-                    this.center.getY() - this.radius * Math.sin(angle)));
+            this.vertices.push(new Point(this.center.x + this.radius * Math.cos(angle),
+                    this.center.y - this.radius * Math.sin(angle)));
             angle += increment;
         }
-    },
-
-    getVertices: function() {
-        return this.vertices;
     },
 
     buildPath: function(context) {
         var i;
 
         context.beginPath();
-        context.moveTo(this.vertices[0].getX(), this.vertices[0].getY());
+        context.moveTo(this.vertices[0].x, this.vertices[0].y);
         for (i = 1; i < this.sides; i++) {
-            context.lineTo(this.vertices[i].getX(), this.vertices[i].getY());
+            context.lineTo(this.vertices[i].x, this.vertices[i].y);
         }
         context.closePath();
     }

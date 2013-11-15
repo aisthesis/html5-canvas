@@ -24,13 +24,13 @@ codeMelon.games = codeMelon.games || {};
             this.CONTEXT.lineCap = 'round';
             
             this.CONTEXT.beginPath();
-            this.CONTEXT.moveTo(this.START.getX(), this.START.getY());
-            this.CONTEXT.quadraticCurveTo(this.CONTROL1.getX(), this.CONTROL1.getY(),
-                this.ANCHOR1.getX(), this.ANCHOR1.getY());
-            this.CONTEXT.quadraticCurveTo(this.CONTROL2.getX(), this.CONTROL2.getY(),
-                this.ANCHOR2.getX(), this.ANCHOR2.getY());
-            this.CONTEXT.quadraticCurveTo(this.CONTROL3.getX(), this.CONTROL3.getY(),
-                this.ANCHOR3.getX(), this.ANCHOR3.getY());
+            this.CONTEXT.moveTo(this.START.x, this.START.y);
+            this.CONTEXT.quadraticCurveTo(this.CONTROL1.x, this.CONTROL1.y,
+                this.ANCHOR1.x, this.ANCHOR1.y);
+            this.CONTEXT.quadraticCurveTo(this.CONTROL2.x, this.CONTROL2.y,
+                this.ANCHOR2.x, this.ANCHOR2.y);
+            this.CONTEXT.quadraticCurveTo(this.CONTROL3.x, this.CONTROL3.y,
+                this.ANCHOR3.x, this.ANCHOR3.y);
             this.CONTEXT.stroke();
         },
 
