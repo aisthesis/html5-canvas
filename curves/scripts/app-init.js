@@ -14,4 +14,7 @@ var app = app || {};
     app.cubicView = new _cg.CubicView({
         el: $('#cubic')
     });
+    app.circleView = new _cg.CircleView({
+        el: $('#circle')
+    });
 })(codeMelon.games);
