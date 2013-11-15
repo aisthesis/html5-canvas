@@ -1,59 +1,23 @@
 /**
  * Dependencies:
+ * subclass.js
+ * shape.js
  * point.js
  */
-var Polygon = Object.cMsubClass({
+var Polygon = Shape.cMsubClass({
     init: function(params) {
         // required
-        this.center = params.center,
-        this.sides = params.sides,
-        this.radius = params.radius,
+        this.center = params.center;
+        this.sides = params.sides;
+        this.radius = params.radius;
         // optional
         // angle in radians at which first vertex will be drawn
-        this.angle = params.angle || 0,
-        this.fillStyle = params.fillStyle || 'white',
-        this.strokeStyle = params.strokeStyle || 'black',
-        this.lineWidth = params.lineWidth || 1
+        this.angle = params.angle || 0;
+        this.fillStyle = params.fillStyle || 'white';
+        this.strokeStyle = params.strokeStyle || 'black';
+        this.lineWidth = params.lineWidth || 1;
         // calculate vertices array (this.vertices)
         this.resetVertices();
-    },
-
-    render: function(context, callback) {
-        context.save();
-        this.buildPath(context);
-        callback();
-        context.restore();
-    },
-
-    fill: function(context) {
-        var _this = this;
-
-        this.render(context, function() {
-            context.fillStyle = _this.fillStyle;
-            context.fill();
-        });
-    },
-
-    stroke: function(context) {
-        var _this = this;
-
-        this.render(context, function() {
-            context.strokeStyle = _this.strokeStyle;
-            context.lineWidth = _this.lineWidth;
-            context.stroke();
-        });
-    },
-
-    draw: function(context) {
-        var _this = this;
-
-        this.render(context, function() {
-            context.strokeStyle = _this.strokeStyle;
-            context.lineWidth = _this.lineWidth;
-            context.fillStyle = _this.fillStyle;
-            context.fill();
-            context.stroke();
-        });
     },
 
     resetVertices: function() {
