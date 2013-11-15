@@ -26,6 +26,14 @@ codeMelon.games = codeMelon.games || {};
             });
 
             polygon.draw(this.CONTEXT);
+            polygon.setLineWidth(2);
+            polygon.setStrokeStyle('red');
+            polygon.stroke(this.CONTEXT);
+            polygon.setRadius(polygon.getRadius() / 2);
+            polygon.setAngle(Math.PI / 8);
+            polygon.resetVertices();
+            polygon.setFillStyle('brown');
+            polygon.fill(this.CONTEXT);
         },
 
         setConstants: function(options) {
