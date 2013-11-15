@@ -32,7 +32,7 @@ codeMelon.games = codeMelon.games || {};
             polygon.radius = polygon.radius / 2;
             polygon.angle = Math.PI / 8;
             polygon.resetVertices();
-            polygon.fillStyle = 'brown';
+            polygon.fillStyle = 'saddlebrown';
             polygon.fill(this.CONTEXT);
         },
 
