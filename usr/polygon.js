@@ -2,7 +2,7 @@
  * Dependencies:
  * point.js
  */
-var Polygon = Object._subClass({
+var Polygon = Object.cMsubClass({
     init: function(params) {
         // required
         this.center = params.center,

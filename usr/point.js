@@ -1,4 +1,4 @@
-var Point = Object._subClass({
+var Point = Object.cMsubClass({
     init: function(x, y) {
         this.x = x;
         this.y = y;
