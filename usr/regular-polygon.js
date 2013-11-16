@@ -1,10 +1,13 @@
 /**
+ * Regular convex polygon defined by
+ * radius, center and number of sides.
+ *
  * Dependencies:
  * subclass.js
  * shape.js
  * point.js
  */
-var Polygon = Shape.cMsubClass({
+var RegularPolygon = Shape.cMsubClass({
     init: function(params) {
         // required
         this.center = params.center;
@@ -42,5 +45,32 @@ var Polygon = Shape.cMsubClass({
             context.lineTo(this.vertices[i].x, this.vertices[i].y);
         }
         context.closePath();
+    },
+    
+    innerRadius: function() {
+        return this.radius * Math.cos(Math.PI / sides);
+    },
+
+    contains: function(point) {
+        var diffX = point.x - this.center.x,
+            diffY = this.center.y - point.y,
+            distance = Math.sqrt(diffX * diffX + diffY * diffY),
+            innerRadius = this.innerRadius(),
+            referenceAngle = Math.PI / sides,
+            angle,
+            steps;
+
+        if (distance > this.radius) { return false; }
+        if (distance < innerRadius) { return true; }
+
+        angle = Math.atan2(diffY, diffX);
+        // adjust according to polygon angle
+        angle -= this.angle;
+        // adjust as needed so that angle is positive
+        while (angle < 0) { angle += Math.PI * 2; }
+        steps = Math.floor(angle * sides / (Math.PI * 2));
+        angle -= steps * 2 * referenceAngle;
+        angle = Math.abs(angle - Math.PI / sides);
+        return distance <= innerRadius / Math.cos(angle);
     }
 });

@@ -15,7 +15,7 @@ codeMelon.games = codeMelon.games || {};
         },
 
         render: function() {
-            var polygon = new Polygon({
+            var polygon = new RegularPolygon({
                 center: new Point(this.el.width / 2, this.el.height / 2),
                 radius: this.el.width / 4,
                 sides: 8,
