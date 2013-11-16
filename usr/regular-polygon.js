@@ -48,7 +48,7 @@ var RegularPolygon = Shape.cMsubClass({
     },
     
     innerRadius: function() {
-        return this.radius * Math.cos(Math.PI / sides);
+        return this.radius * Math.cos(Math.PI / this.sides);
     },
 
     contains: function(point) {
@@ -56,7 +56,7 @@ var RegularPolygon = Shape.cMsubClass({
             diffY = this.center.y - point.y,
             distance = Math.sqrt(diffX * diffX + diffY * diffY),
             innerRadius = this.innerRadius(),
-            referenceAngle = Math.PI / sides,
+            referenceAngle = Math.PI / this.sides,
             angle,
             steps;
 
@@ -68,9 +68,9 @@ var RegularPolygon = Shape.cMsubClass({
         angle -= this.angle;
         // adjust as needed so that angle is positive
         while (angle < 0) { angle += Math.PI * 2; }
-        steps = Math.floor(angle * sides / (Math.PI * 2));
+        steps = Math.floor(angle * this.sides / (Math.PI * 2));
         angle -= steps * 2 * referenceAngle;
-        angle = Math.abs(angle - Math.PI / sides);
+        angle = Math.abs(angle - referenceAngle);
         return distance <= innerRadius / Math.cos(angle);
     }
 });
