@@ -21,7 +21,7 @@
     // generic base class
     this.Base = function() {};
 
-    Base.extend = function (properties) {
+    Base.extend = function extend(properties) {
         var _super = this.prototype,
             proto,
             name;
@@ -50,7 +50,7 @@
 
         Class.prototype = proto;
         Class.constructor = Class;
-        Class.extend = arguments.callee;
+        Class.extend = extend;
         return Class;
     };
 })();
