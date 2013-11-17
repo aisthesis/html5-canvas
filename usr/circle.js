@@ -6,13 +6,10 @@
  */
 var Circle = Shape.extend({
     init: function(params) {
+        this._super(params);
         // required
         this.center = params.center;
         this.radius = params.radius;
-        // optional
-        this.fillStyle = params.fillStyle || 'white';
-        this.strokeStyle = params.strokeStyle || 'black';
-        this.lineWidth = params.lineWidth || 1;
     },
 
     buildPath: function(context) {

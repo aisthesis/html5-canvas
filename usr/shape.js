@@ -12,6 +12,12 @@
  */
 
 var Shape = Base.extend({
+    init: function(params) {
+        this.fillStyle = params.fillStyle || 'white';
+        this.strokeStyle = params.strokeStyle || 'black';
+        this.lineWidth = params.lineWidth || 1;
+    },
+
     render: function(context, callback) {
         context.save();
         this.buildPath(context);

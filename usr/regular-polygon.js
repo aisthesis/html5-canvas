@@ -3,12 +3,13 @@
  * radius, center and number of sides.
  *
  * Dependencies:
- * subclass.js
+ * extend.js
  * shape.js
  * point.js
  */
 var RegularPolygon = Shape.extend({
     init: function(params) {
+        this._super(params);
         // required
         this.center = params.center;
         this.sides = params.sides;
@@ -16,9 +17,6 @@ var RegularPolygon = Shape.extend({
         // optional
         // angle in radians at which first vertex will be drawn
         this.angle = params.angle || 0;
-        this.fillStyle = params.fillStyle || 'white';
-        this.strokeStyle = params.strokeStyle || 'black';
-        this.lineWidth = params.lineWidth || 1;
         // calculate vertices array (this.vertices)
         this.resetVertices();
     },

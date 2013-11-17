@@ -5,14 +5,10 @@
  * My version differs from the book in 3 ways:
  * 1) It doesn't check for whether the corresponding
  *    _super method is called by the overriding subclass method.
- * 2) It uses a different syntax that ALWAYS (even for constructor)
- *    requires the super method to be called explicitly. So, to 
- *    call the super constructor, you write
- *    _super.init(params);
- *    NOT just _super(params);
- *    (the latter will result in an error)
- * 3) No functionality is added directly to the built-in
+ * 2) No functionality is added directly to the built-in
  *    JavaScript Object.
+ * 3) The reference to arguments.callee (likely to be
+ *    deprecated) is eliminated.
  */
 
 (function () {
@@ -35,9 +31,13 @@
             proto[name] = typeof properties[name] === "function" &&
                 typeof _super[name] === "function" ? (function (name, fn) {
                     return function () {
-                        this._super = this._super || {};
-                        this._super[name] = _super[name];
-                        return fn.apply(this, arguments);
+                        var tmp = this._super,
+                            ret;
+
+                        this._super = _super[name];
+                        ret = fn.apply(this, arguments);
+                        this._super = tmp;
+                        return ret;
                     };
                 })(name, properties[name]) : properties[name];
         }
