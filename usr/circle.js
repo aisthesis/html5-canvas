@@ -1,10 +1,10 @@
 /**
  * Dependencies:
- * subclass.js
+ * extend.js
  * shape.js
  * point.js
  */
-var Circle = Shape.cMsubClass({
+var Circle = Shape.extend({
     init: function(params) {
         // required
         this.center = params.center;

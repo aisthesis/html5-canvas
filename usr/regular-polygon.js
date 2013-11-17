@@ -7,7 +7,7 @@
  * shape.js
  * point.js
  */
-var RegularPolygon = Shape.cMsubClass({
+var RegularPolygon = Shape.extend({
     init: function(params) {
         // required
         this.center = params.center;

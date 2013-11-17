@@ -1,4 +1,4 @@
-var Point = Object.cMsubClass({
+var Point = Base.extend({
     init: function(x, y) {
         this.x = x;
         this.y = y;

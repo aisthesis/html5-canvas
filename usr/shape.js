@@ -8,10 +8,10 @@
  * the shape to be drawn.
  *
  * Dependencies:
- * subclass.js
+ * extend.js
  */
 
-var Shape = Object.cMsubClass({
+var Shape = Base.extend({
     render: function(context, callback) {
         context.save();
         this.buildPath(context);
