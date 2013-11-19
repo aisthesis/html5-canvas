@@ -17,5 +17,9 @@ var Circle = Shape.extend({
         context.arc(this.center.x, this.center.y, this.radius, 
             0, Math.PI * 2, false);
         context.closePath();
+    },
+
+    contains: function(point) {
+        return this.center.distanceTo(point) <= this.radius;
     }
 });

@@ -59,7 +59,7 @@ var RegularPolygon = Shape.extend({
             steps;
 
         if (distance > this.radius) { return false; }
-        if (distance < innerRadius) { return true; }
+        if (distance <= innerRadius) { return true; }
 
         angle = Math.atan2(diffY, diffX);
         // adjust according to polygon angle
