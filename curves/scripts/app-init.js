@@ -17,4 +17,7 @@ var app = app || {};
     app.circleView = new _cg.CircleView({
         el: $('#circle')
     });
+    app.draggableCurveView = new _cg.DraggableCurveView({
+        el: $('#draggable-curve')
+    });
 })(codeMelon.games);
