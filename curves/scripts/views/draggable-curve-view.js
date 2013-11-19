@@ -4,13 +4,25 @@ codeMelon.games = codeMelon.games || {};
 (function(_cg) {
     "use strict";
     _cg.DraggableCurveView = Backbone.View.extend({
+        events: {
+            "mousedown": "handleMouseDown",
+            "mousemove": "handleMouseMove",
+            "mouseup": "handleMouseUp"
+        },
+
         initialize: function(options) {
             _.bindAll(this,
                 'render',
                 'setConstants',
                 'initMembers',
+                'handleMouseDown',
+                'handleMouseMove',
+                'handleMouseUp',
+                'movePointIfDragging',
                 'drawBezierCurve',
-                'drawPoints'
+                'drawPoints',
+                'getOffset',
+                'movePoint'
             );
 
             this.setConstants(options);
@@ -61,6 +73,58 @@ codeMelon.games = codeMelon.games || {};
                     strokeStyle: this.CTRL_POINT_STROKE_STYLE
                 })
             ];
+            this.mousedown = {};
+            this.dragging = {
+                active: false,
+                view: null,
+                origCenter: null
+            };
+        },
+
+        handleMouseDown: function(event) {
+            var loc = _cg.windowToCanvas(this.el, event.clientX, event.clientY),
+                i;
+
+            if (this.dragging.active || this.dragging.view !== null) {
+                this.dragging.active = false;
+                this.dragging.view = null;
+                return;
+            }
+            for (i = 0; i < this.endPoints.length && this.dragging.view === null; i++) {
+                if (this.endPoints[i].contains(loc)) {
+                    this.dragging.view = this.endPoints[i];
+                }
+            }
+            for (i = 0; i < this.ctrlPoints.length && this.dragging.view === null; i++) {
+                if (this.ctrlPoints[i].contains(loc)) {
+                    this.dragging.view = this.ctrlPoints[i];
+                }
+            }
+            if (this.dragging.view !== null) {
+                this.dragging.active = true;
+                this.mousedown = loc;
+                this.dragging.origCenter = new Point(this.dragging.view.center.x, this.dragging.view.center.y);
+                console.log('mousedown at (' + this.dragging.view.center.x + ', ' + this.dragging.view.center.y + ')');
+            }
+        },
+
+        handleMouseMove: function(event) {
+            this.movePointIfDragging(event);
+        },
+
+        handleMouseUp: function(event) {
+            if (!this.movePointIfDragging(event)) { return; }
+            this.dragging.active = false;
+            this.dragging.view = null;
+        },
+
+        movePointIfDragging: function(event) {
+            var offset;
+
+            if (!this.dragging.active) { return false; }
+            offset = this.getOffset(event);
+            this.movePoint(this.dragging.view, offset);
+            return true;
         },
         
         drawBezierCurve: function() {
@@ -88,6 +152,23 @@ codeMelon.games = codeMelon.games || {};
             this.ctrlPoints.forEach(function(pt) {
                 pt.draw(_this.CONTEXT);
             });
+        },
+
+        getOffset: function(event) {
+            var result = {},
+                targetPoint;
+
+            targetPoint = _cg.windowToCanvas(this.el, event.clientX, event.clientY);
+            result.x = targetPoint.x - this.mousedown.x;
+            result.y = targetPoint.y - this.mousedown.y;
+            return result;
+        },
+
+        movePoint: function(point, offset) {
+            point.center.x = this.dragging.origCenter.x + offset.x;
+            point.center.y = this.dragging.origCenter.y + offset.y;
+            this.CONTEXT.clearRect(0, 0, this.el.width, this.el.height);
+            this.render();
         }
     });
 })(codeMelon.games);
