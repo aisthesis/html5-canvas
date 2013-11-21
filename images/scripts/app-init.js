@@ -1,3 +1,3 @@
-var canvasView = new codeMelon.games.CanvasView({
-        el: $('#game-canvas')
+var countryRoadView = new codeMelon.games.CountryRoadView({
+        el: '#country-road'
     }); 
