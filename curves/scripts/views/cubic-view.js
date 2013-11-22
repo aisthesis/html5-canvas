@@ -25,12 +25,12 @@ codeMelon.games = codeMelon.games || {};
         setConstants: function(options) {
             this.CONTEXT = this.el.getContext('2d');
             this.END_POINTS = [
-                new Point(130, 70),
-                new Point(430, 270)
+                new _c.draw.Point(130, 70),
+                new _c.draw.Point(430, 270)
             ];
             this.CTRL_POINTS = [
-                new Point(130, 250),
-                new Point(450, 70)
+                new _c.draw.Point(130, 250),
+                new _c.draw.Point(450, 70)
             ];
         },
         

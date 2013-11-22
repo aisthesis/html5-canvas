@@ -28,21 +28,21 @@ codeMelon.games = codeMelon.games || {};
             this.POINT_RADIUS = 7;
             this.CORNERS = [
                 {
-                    ctrl: new Point(this.el.width - this.ARROW_MARGIN, 
+                    ctrl: new _c.draw.Point(this.el.width - this.ARROW_MARGIN, 
                         this.el.height - this.ARROW_MARGIN),
-                    anchor: new Point(this.el.width - this.ARROW_MARGIN * 2,
+                    anchor: new _c.draw.Point(this.el.width - this.ARROW_MARGIN * 2,
                         this.el.height - this.ARROW_MARGIN)
                 },
                 {
-                    ctrl: new Point(this.POINT_RADIUS,
+                    ctrl: new _c.draw.Point(this.POINT_RADIUS,
                         this.el.height / 2),
-                    anchor: new Point(this.ARROW_MARGIN,
+                    anchor: new _c.draw.Point(this.ARROW_MARGIN,
                         this.el.height / 2 - this.ARROW_MARGIN)
                 },
                 {
-                    ctrl: new Point(this.el.width - this.ARROW_MARGIN,
+                    ctrl: new _c.draw.Point(this.el.width - this.ARROW_MARGIN,
                         this.ARROW_MARGIN),
-                    anchor: new Point(this.el.width - this.ARROW_MARGIN,
+                    anchor: new _c.draw.Point(this.el.width - this.ARROW_MARGIN,
                         this.ARROW_MARGIN * 2)
                 }
             ];

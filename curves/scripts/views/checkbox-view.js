@@ -36,13 +36,13 @@ codeMelon.games = codeMelon.games || {};
 
         setConstants: function(options) {
             this.CONTEXT = this.el.getContext('2d');
-            this.START = new Point(120.5, 130);
-            this.ANCHOR1 = new Point(160.6, 150.5);
-            this.CONTROL1 = new Point(150.8, 130);
-            this.ANCHOR2 = new Point(210.5, 160.5);
-            this.CONTROL2 = new Point(190, 250.0);
-            this.ANCHOR3 = new Point(290, 70.5);
-            this.CONTROL3 = new Point(240, 100.5);
+            this.START = new _c.draw.Point(120.5, 130);
+            this.ANCHOR1 = new _c.draw.Point(160.6, 150.5);
+            this.CONTROL1 = new _c.draw.Point(150.8, 130);
+            this.ANCHOR2 = new _c.draw.Point(210.5, 160.5);
+            this.CONTROL2 = new _c.draw.Point(190, 250.0);
+            this.ANCHOR3 = new _c.draw.Point(290, 70.5);
+            this.CONTROL3 = new _c.draw.Point(240, 100.5);
         }
     });
 })(codeMelon.games);

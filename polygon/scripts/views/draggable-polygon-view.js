@@ -41,9 +41,9 @@ codeMelon.games = codeMelon.games || {};
         initMembers: function(options) {
             this.fillStyle = 'cornflowerblue';
             this.strokeStyle = 'goldenrod';
-            this.polygonCenter = new Point(this.el.width / 2, this.el.height / 2);
-            this.polygon = new RegularPolygon({
-                center: new Point(this.polygonCenter.x, this.polygonCenter.y),
+            this.polygonCenter = new _c.draw.Point(this.el.width / 2, this.el.height / 2);
+            this.polygon = new _c.draw.RegularPolygon({
+                center: new _c.draw.Point(this.polygonCenter.x, this.polygonCenter.y),
                 radius: this.el.width / 8,
                 sides: 5,
                 angle: Math.PI / 2,
@@ -64,7 +64,7 @@ codeMelon.games = codeMelon.games || {};
             }
             if (this.polygon.contains(loc)) {
                 event.preventDefault();
-                this.mousedown = new Point(loc.x, loc.y);
+                this.mousedown = new _c.draw.Point(loc.x, loc.y);
                 this.dragging = true;
                 this.highlightPolygon();
             }
@@ -110,8 +110,8 @@ codeMelon.games = codeMelon.games || {};
         },
 
         highlightPolygon: function() {
-            this.polygon.fillStyle = _cg.highlights[this.fillStyle];
-            this.polygon.strokeStyle = _cg.highlights[this.strokeStyle];
+            this.polygon.fillStyle = _c.draw.highlights[this.fillStyle];
+            this.polygon.strokeStyle = _c.draw.highlights[this.strokeStyle];
             this.polygon.draw(this.CONTEXT);
         },
 
@@ -124,7 +124,7 @@ codeMelon.games = codeMelon.games || {};
         windowToCanvas: function(_x, _y) {
             var bbox = this.el.getBoundingClientRect();
 
-            return new Point(_x - bbox.left, _y - bbox.top);
+            return new _c.draw.Point(_x - bbox.left, _y - bbox.top);
         }
     });
 })(codeMelon.games);

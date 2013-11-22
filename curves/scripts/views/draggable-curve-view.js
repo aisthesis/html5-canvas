@@ -46,28 +46,28 @@ codeMelon.games = codeMelon.games || {};
 
         initMembers: function(options) {
             this.endPoints = [
-                new Circle({
-                    center: new Point(130, 70),
+                new _c.draw.Circle({
+                    center: new _c.draw.Point(130, 70),
                     radius: this.DRAGGABLE_POINT_RADIUS,
                     fillStyle: this.END_POINT_FILL_STYLE,
                     strokeStyle: this.END_POINT_STROKE_STYLE
                 }),
-                new Circle({
-                    center: new Point(430, 270),
+                new _c.draw.Circle({
+                    center: new _c.draw.Point(430, 270),
                     radius: this.DRAGGABLE_POINT_RADIUS,
                     fillStyle: this.END_POINT_FILL_STYLE,
                     strokeStyle: this.END_POINT_STROKE_STYLE
                 })
             ];
             this.ctrlPoints = [
-                new Circle({
-                    center: new Point(130, 250),
+                new _c.draw.Circle({
+                    center: new _c.draw.Point(130, 250),
                     radius: this.DRAGGABLE_POINT_RADIUS,
                     fillStyle: this.CTRL_POINT_FILL_STYLE,
                     strokeStyle: this.CTRL_POINT_STROKE_STYLE
                 }),
-                new Circle({
-                    center: new Point(450, 70),
+                new _c.draw.Circle({
+                    center: new _c.draw.Point(450, 70),
                     radius: this.DRAGGABLE_POINT_RADIUS,
                     fillStyle: this.CTRL_POINT_FILL_STYLE,
                     strokeStyle: this.CTRL_POINT_STROKE_STYLE
@@ -82,7 +82,7 @@ codeMelon.games = codeMelon.games || {};
         },
 
         handleMouseDown: function(event) {
-            var loc = _cg.windowToCanvas(this.el, event.clientX, event.clientY),
+            var loc = _c.draw.windowToCanvas(this.el, event.clientX, event.clientY),
                 i;
 
             if (this.dragging.active || this.dragging.view !== null) {
@@ -103,7 +103,7 @@ codeMelon.games = codeMelon.games || {};
             if (this.dragging.view !== null) {
                 this.dragging.active = true;
                 this.mousedown = loc;
-                this.dragging.origCenter = new Point(this.dragging.view.center.x, this.dragging.view.center.y);
+                this.dragging.origCenter = new _c.draw.Point(this.dragging.view.center.x, this.dragging.view.center.y);
                 console.log('mousedown at (' + this.dragging.view.center.x + ', ' + this.dragging.view.center.y + ')');
             }
         },
@@ -158,7 +158,7 @@ codeMelon.games = codeMelon.games || {};
             var result = {},
                 targetPoint;
 
-            targetPoint = _cg.windowToCanvas(this.el, event.clientX, event.clientY);
+            targetPoint = _c.draw.windowToCanvas(this.el, event.clientX, event.clientY);
             result.x = targetPoint.x - this.mousedown.x;
             result.y = targetPoint.y - this.mousedown.y;
             return result;
