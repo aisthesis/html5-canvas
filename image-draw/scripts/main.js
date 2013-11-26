@@ -11,7 +11,10 @@ require.config({
         'Point': '../usr/draw/point',
         'extend': '../usr/extend',
         'countryRoadView': 'scripts/views/country-road-view',
-        'rectanglesView': 'scripts/views/rectangles-view'
+        'rectanglesView': 'scripts/views/rectangles-view',
+        'imageManipView': 'scripts/views/image-manip-view',
+        'archOrigView': 'scripts/views/arch-orig-view',
+        'archModifiedView': 'scripts/views/arch-modified-view'
     },
 
     shim: {
@@ -21,18 +24,26 @@ require.config({
         'Shape': ['extend'],
         'countryRoadView': ['backbone'],
         'backbone': ['underscore', 'jquery'],
-        'bootstrap': ['jquery']
+        'bootstrap': ['jquery'],
+        'imageManipView': ['backbone'],
+        'archOrigView': ['backbone'],
+        'archModifiedView': ['backbone']
     }
 });
 
 require(['jquery', 'bootstrap', 'underscore', 'backbone', 'countryRoadView',
-        'rectanglesView', 'Point', 'Shape', 'Rectangle'], 
+        'rectanglesView', 'Point', 'Shape', 'Rectangle', 'imageManipView',
+        'archOrigView', 'archModifiedView'], 
     function($, bootstrap, _, Backbone, countryRoadView,
-        rectanglesView, Point, Shape, Rectangle) {
+        rectanglesView, Point, Shape, Rectangle, imageManipView,
+        archOrigView, archModifiedView) {
         var _countryRoadView = new codeMelon.games.CountryRoadView({
                 el: '#country-road'
             }),
             _rectanglesView = new codeMelon.games.RectanglesView({
                 el: '#rectangles'
+            }),
+            _imageManipView = new codeMelon.games.ImageManipView({
+                el: '#image-manip'
             }); 
     });
