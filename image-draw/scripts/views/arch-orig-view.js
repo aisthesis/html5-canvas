@@ -46,6 +46,8 @@ codeMelon.games = codeMelon.games || {};
                     el: '#arch-modified',
                     imageData: _this.transparentImageData
                 });
+                _this.deviceWidthOverCSSPixels = _this.imageData.width / _this.el.width;
+                _this.deviceHeightOverCSSPixels = _this.imageData.height / _this.el.height;
             };
             _this.dragging = false;
         },
@@ -81,6 +83,11 @@ codeMelon.games = codeMelon.games || {};
             this.rectangle.width = loc.x - this.rectangle.corner.x;
             this.rectangle.height = loc.y - this.rectangle.corner.y;
             this.CONTEXT.drawImage(this.image, 0, 0);
+            this.CONTEXT.putImageData(this.transparentImageData, 0, 0, 
+                this.rectangle.left() * this.deviceWidthOverCSSPixels, 
+                this.rectangle.top() * this.deviceHeightOverCSSPixels,
+                this.rectangle.absoluteWidth() * this.deviceWidthOverCSSPixels,
+                this.rectangle.absoluteHeight() * this.deviceHeightOverCSSPixels);
             this.rectangle.stroke(this.CONTEXT);
         },
 
