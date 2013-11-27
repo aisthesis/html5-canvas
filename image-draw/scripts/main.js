@@ -10,6 +10,7 @@ require.config({
         'Shape': '../usr/draw/shape',
         'Point': '../usr/draw/point',
         'extend': '../usr/extend',
+        'canvasUtils': '../usr/draw/canvas-utils',
         'countryRoadView': 'scripts/views/country-road-view',
         'rectanglesView': 'scripts/views/rectangles-view',
         'imageManipView': 'scripts/views/image-manip-view',
@@ -33,10 +34,10 @@ require.config({
 
 require(['jquery', 'bootstrap', 'underscore', 'backbone', 'countryRoadView',
         'rectanglesView', 'Point', 'Shape', 'Rectangle', 'imageManipView',
-        'archOrigView', 'archModifiedView'], 
+        'archOrigView', 'archModifiedView', 'canvasUtils'], 
     function($, bootstrap, _, Backbone, countryRoadView,
         rectanglesView, Point, Shape, Rectangle, imageManipView,
-        archOrigView, archModifiedView) {
+        archOrigView, archModifiedView, canvasUtils) {
         var _countryRoadView = new codeMelon.games.CountryRoadView({
                 el: '#country-road'
             }),

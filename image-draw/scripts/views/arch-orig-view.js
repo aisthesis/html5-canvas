@@ -3,13 +3,22 @@ codeMelon.games = codeMelon.games || {};
 
 (function(_cg) {
     _cg.ArchOrigView = Backbone.View.extend({
+        events: {
+            'mousedown': 'handleMouseDown',
+            'mousemove': 'handleMouseMove',
+            'mouseup': 'handleMouseUp'
+        },
+
         initialize: function(options) {
             _.bindAll(this,
                 'render',
                 'setConstants',
                 'initMembers',
                 'setImageData',
-                'setTransparentImageData'
+                'setTransparentImageData',
+                'handleMouseDown',
+                'handleMouseMove',
+                'handleMouseUp'
             );
 
             this.setConstants(options);
@@ -38,6 +47,7 @@ codeMelon.games = codeMelon.games || {};
                     imageData: _this.transparentImageData
                 });
             };
+            _this.dragging = false;
         },
 
         setImageData: function() {
@@ -55,6 +65,29 @@ codeMelon.games = codeMelon.games || {};
                 this.transparentImageData.data[i + 2] = this.imageData.data[i + 2];
                 this.transparentImageData.data[i + 3] = this.imageData.data[i + 3] / 2;
             }
+        },
+
+        handleMouseDown: function(event) {
+            this.dragging = true;
+            this.rectangle = new _c.draw.Rectangle({
+                corner: _c.draw.windowToCanvas(this.el, event.clientX, event.clientY)
+            });
+        },
+
+        handleMouseMove: function(event) {
+            var loc = _c.draw.windowToCanvas(this.el, event.clientX, event.clientY);
+
+            if (!this.dragging) { return; }
+            this.rectangle.width = loc.x - this.rectangle.corner.x;
+            this.rectangle.height = loc.y - this.rectangle.corner.y;
+            this.CONTEXT.drawImage(this.image, 0, 0);
+            this.rectangle.stroke(this.CONTEXT);
+        },
+
+        handleMouseUp: function(event) {
+            this.dragging = false;
+            this.rectangle = null;
+            this.CONTEXT.drawImage(this.image, 0, 0);
         }
     });
 })(codeMelon.games);
