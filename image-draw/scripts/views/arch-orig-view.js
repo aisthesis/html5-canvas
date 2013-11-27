@@ -86,8 +86,8 @@ codeMelon.games = codeMelon.games || {};
             this.CONTEXT.putImageData(this.transparentImageData, 0, 0, 
                 this.rectangle.left() * this.deviceWidthOverCSSPixels, 
                 this.rectangle.top() * this.deviceHeightOverCSSPixels,
-                this.rectangle.absoluteWidth() * this.deviceWidthOverCSSPixels,
-                this.rectangle.absoluteHeight() * this.deviceHeightOverCSSPixels);
+                this.rectangle.absWidth() * this.deviceWidthOverCSSPixels,
+                this.rectangle.absHeight() * this.deviceHeightOverCSSPixels);
             this.rectangle.stroke(this.CONTEXT);
         },
 
