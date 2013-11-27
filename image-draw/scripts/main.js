@@ -7,6 +7,7 @@ require.config({
         'underscore': '../lib/underscore-1.5.2.min',
         'backbone': '../lib/backbone-1.1.0.min',
         'Rectangle': '../usr/draw/rectangle',
+        'Circle': '../usr/draw/circle',
         'Shape': '../usr/draw/shape',
         'Point': '../usr/draw/point',
         'extend': '../usr/extend',
@@ -15,12 +16,14 @@ require.config({
         'rectanglesView': 'scripts/views/rectangles-view',
         'imageManipView': 'scripts/views/image-manip-view',
         'archOrigView': 'scripts/views/arch-orig-view',
-        'archModifiedView': 'scripts/views/arch-modified-view'
+        'archModifiedView': 'scripts/views/arch-modified-view',
+        'sunglassesView': 'scripts/views/sunglasses-view'
     },
 
     shim: {
         'rectanglesView': ['Rectangle'],
         'Rectangle': ['Shape', 'Point'],
+        'Circle': ['Shape', 'Point'],
         'Point': ['extend'],
         'Shape': ['extend'],
         'countryRoadView': ['backbone'],
@@ -28,16 +31,17 @@ require.config({
         'bootstrap': ['jquery'],
         'imageManipView': ['backbone'],
         'archOrigView': ['backbone'],
-        'archModifiedView': ['backbone']
+        'archModifiedView': ['backbone'],
+        'sunglassesView': ['backbone', 'Circle']
     }
 });
 
 require(['jquery', 'bootstrap', 'underscore', 'backbone', 'countryRoadView',
-        'rectanglesView', 'Point', 'Shape', 'Rectangle', 'imageManipView',
-        'archOrigView', 'archModifiedView', 'canvasUtils'], 
+        'rectanglesView', 'Point', 'Shape', 'Rectangle', 'Circle', 'imageManipView',
+        'archOrigView', 'archModifiedView', 'canvasUtils', 'sunglassesView'], 
     function($, bootstrap, _, Backbone, countryRoadView,
-        rectanglesView, Point, Shape, Rectangle, imageManipView,
-        archOrigView, archModifiedView, canvasUtils) {
+        rectanglesView, Point, Shape, Rectangle, Circle, imageManipView,
+        archOrigView, archModifiedView, canvasUtils, sunglassesView) {
         var _countryRoadView = new codeMelon.games.CountryRoadView({
                 el: '#country-road'
             }),
@@ -46,5 +50,8 @@ require(['jquery', 'bootstrap', 'underscore', 'backbone', 'countryRoadView',
             }),
             _imageManipView = new codeMelon.games.ImageManipView({
                 el: '#image-manip'
+            }),
+            _sunglassesView = new codeMelon.games.SunglassesView({
+                el: '#sunglasses'
             }); 
     });
