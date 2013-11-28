@@ -51,8 +51,7 @@ codeMelon.games = codeMelon.games || {};
             var _this = this;
 
             this.offscreenContext.putImageData(event.data, 0, 0);
-            this.CLIPPING_CIRCLE.render(_this.CONTEXT, function() {
-                _this.CONTEXT.clip();
+            this.CLIPPING_CIRCLE.clip(_this.CONTEXT, function() {
                 _this.CONTEXT.drawImage(_this.offscreenCanvas, 0, 0, _this.el.width, _this.el.height);
             });
         }
