@@ -56,8 +56,10 @@ require(['jquery', 'bootstrap', 'underscore', 'backbone', 'countryRoadView',
             }),
             _sunglassesView = new codeMelon.games.SunglassesView({
                 el: '#sunglasses'
-            }),
-            _magnifyView = new codeMelon.games.MagnifyView({
-                el: '#magnify'
-            }); 
+            });
+
+        _c.app.main = {};
+        _c.app.main.magnifyView = new _c.app.views.MagnifyView({
+            el: '#magnify'
+        }); 
     });

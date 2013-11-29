@@ -18,7 +18,9 @@ require.config({
 
 require(['jquery', 'bootstrap', 'underscore', 'backbone', 'canvas-view'], 
     function($, bootstrap, _, Backbone, cv) {
-        var canvasView = new codeMelon.games.CanvasView({
+        'use strict';
+        _c.app.main = {};
+        _c.app.main.canvasView = new _c.app.views.CanvasView({
             el: '#game-canvas'
         }); 
     });

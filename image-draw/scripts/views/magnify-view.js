@@ -1,5 +1,6 @@
-var codeMelon = codeMelon || {}; 
-codeMelon.games = codeMelon.games || {}; 
+var _c = _c || {}; 
+_c.app = _c.app || {}; 
+_c.app.views = _c.app.views || {};
 
 (function(_cg) {
     _cg.MagnifyView = Backbone.View.extend({
@@ -105,4 +106,4 @@ codeMelon.games = codeMelon.games || {};
             this.drawMagnifier();
         }
 });
-})(codeMelon.games);
+})(_c.app.views);

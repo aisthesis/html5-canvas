@@ -1,8 +1,10 @@
-var codeMelon = codeMelon || {}; 
-codeMelon.games = codeMelon.games || {}; 
+var _c = _c || {}; 
+_c.app = _c.app || {}; 
+_c.app.views = _c.app.views || {};
 
-(function(_cg) {
-    _cg.CanvasView = Backbone.View.extend({
+(function(views) {
+    "use strict";
+    views.CanvasView = Backbone.View.extend({
         initialize: function(options) {
             _.bindAll(this,
                 'render',
@@ -23,4 +25,4 @@ codeMelon.games = codeMelon.games || {};
             this.CONTEXT = this.el.getContext('2d');
         }
     });
-})(codeMelon.games);
+})(_c.app.views);
