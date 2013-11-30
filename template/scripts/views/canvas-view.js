@@ -8,21 +8,27 @@ _c.app.views = _c.app.views || {};
         initialize: function(options) {
             _.bindAll(this,
                 'render',
-                'setConstants'
+                'setConstants',
+                'initMembers'
             );
 
             this.setConstants(options);
+            this.initMembers(options);
             this.render();
         },
 
         render: function() {
-            this.CONTEXT.moveTo(0, 0);
-            this.CONTEXT.lineTo(this.el.width / 2, this.el.height);
-            this.CONTEXT.stroke();
+            this.context.moveTo(0, 0);
+            this.context.lineTo(this.el.width / 2, this.el.height);
+            this.context.stroke();
         },
 
         setConstants: function(options) {
-            this.CONTEXT = this.el.getContext('2d');
+            // TODO
+        },
+
+        initMembers: function(options) {
+            this.context = this.el.getContext('2d');
         }
     });
 })(_c.app.views);
