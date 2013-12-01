@@ -1,3 +1,7 @@
+var _c = _c || {};
+_c.path = _c.path || {};
+_c.path.usr = '../usr/';
+
 require.config({
     baseUrl: '.',
 
