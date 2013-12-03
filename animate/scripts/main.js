@@ -7,6 +7,7 @@ require.config({
 
     paths: {
         'discsView': 'scripts/views/discs-view',
+        'scrollBgView': 'scripts/views/scroll-bg-view',
         'jquery': '../lib/jquery-2.0.3.min',
         'bootstrap': '../lib/bootstrap-3.0.0/js/bootstrap.min',
         'underscore': '../lib/underscore-1.5.2.min',
@@ -15,17 +16,22 @@ require.config({
     },
 
     shim: {
-        'discsView': ['Backbone'],
+        'discsView': ['Backbone', 'draw'],
+        'scrollBgView': ['Backbone', 'draw'],
         'Backbone': ['underscore', 'jquery'],
         'bootstrap': ['jquery']
     }
 });
 
-require(['jquery', 'bootstrap', 'underscore', 'Backbone', 'draw', 'discsView'], 
-    function($, bootstrap, _, Backbone, draw, discsView) {
+require(['jquery', 'bootstrap', 'underscore', 'Backbone', 'draw', 
+    'discsView', 'scrollBgView'], 
+    function($, bootstrap, _, Backbone, draw, discsView, scrollBgView) {
         'use strict';
         _c.app.main = {};
         _c.app.main.discsView = new _c.app.views.DiscsView({
             el: '#discs'
+        }); 
+        _c.app.main.scrollBgView = new _c.app.views.ScrollBgView({
+            el: '#scroll-bg'
         }); 
     });
