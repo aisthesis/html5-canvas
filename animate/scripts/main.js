@@ -8,6 +8,7 @@ require.config({
     paths: {
         'discsView': 'scripts/views/discs-view',
         'scrollBgView': 'scripts/views/scroll-bg-view',
+        'parallaxView': 'scripts/views/parallax-view',
         'jquery': '../lib/jquery-2.0.3.min',
         'bootstrap': '../lib/bootstrap-3.0.0/js/bootstrap.min',
         'underscore': '../lib/underscore-1.5.2.min',
@@ -18,20 +19,25 @@ require.config({
     shim: {
         'discsView': ['Backbone', 'draw'],
         'scrollBgView': ['Backbone', 'draw'],
+        'parallaxView': ['Backbone', 'draw'],
         'Backbone': ['underscore', 'jquery'],
         'bootstrap': ['jquery']
     }
 });
 
 require(['jquery', 'bootstrap', 'underscore', 'Backbone', 'draw', 
-    'discsView', 'scrollBgView'], 
-    function($, bootstrap, _, Backbone, draw, discsView, scrollBgView) {
-        'use strict';
-        _c.app.main = {};
-        _c.app.main.discsView = new _c.app.views.DiscsView({
-            el: '#discs'
-        }); 
-        _c.app.main.scrollBgView = new _c.app.views.ScrollBgView({
-            el: '#scroll-bg'
-        }); 
-    });
+        'discsView', 'scrollBgView', 'parallaxView'], 
+        function($, bootstrap, _, Backbone, draw, discsView, scrollBgView, 
+        parallaxView) {
+    'use strict';
+    _c.app.main = {};
+    _c.app.main.discsView = new _c.app.views.DiscsView({
+        el: '#discs'
+    }); 
+    _c.app.main.scrollBgView = new _c.app.views.ScrollBgView({
+        el: '#scroll-bg'
+    }); 
+    _c.app.main.parallaxView = new _c.app.views.ParallaxView({
+        el: '#parallax'
+    }); 
+});
