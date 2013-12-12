@@ -33,23 +33,19 @@ _c.app.views = _c.app.views || {};
                 drawable: new _c.draw.Circle({
                     center: new _c.draw.Point(_this.el.width / 2, _this.el.height / 2),
                     radius: _this.RADIUS,
-                    strokeStyle: 'rgb(100,100,195)',
-                    fillStyle: 'rgba(30,144,255,0.15)',
-                    lineWidth: 2
+                    styles: {
+                        strokeStyle: 'rgb(100,100,195)',
+                        fillStyle: 'rgba(30,144,255,0.15)',
+                        lineWidth: 2,
+                        shadowColor: 'rgb(0,0,0)',
+                        shadowOffsetX: -4,
+                        shadowOffsetY: -4,
+                        shadowBlur: 8
+                    }
                 }),
 
                 paint: function(context) {
-                    var _this = this;
-
-                    this.drawable.clip(context, function() {
-                        context.shadowColor = 'rgb(0,0,0)';
-                        context.shadowOffsetX = -4;
-                        context.shadowOffsetY = -4;
-                        context.shadowBlur = 8;
-                        _this.drawable.prep(context);
-                        context.fill();
-                        context.stroke();
-                    });
+                    this.drawable.drawClipped(context);
                 }
             });
         }

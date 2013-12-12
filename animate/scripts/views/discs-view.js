@@ -41,8 +41,10 @@ _c.app.views = _c.app.views || {};
                     circle: new _c.draw.Circle({
                         center: new _c.draw.Point(150, 250),
                         radius: this.RADIUS,
-                        fillStyle: 'orange',
-                        strokeStyle: 'gray'
+                        styles: {
+                            fillStyle: 'orange',
+                            strokeStyle: 'gray'
+                        }
                     }),
 
                     velocity: new _c.draw.Vector(-3.2, 3.5)
@@ -52,8 +54,10 @@ _c.app.views = _c.app.views || {};
                     circle: new _c.draw.Circle({
                         center: new _c.draw.Point(50, 150),
                         radius: this.RADIUS,
-                        fillStyle: 'navy',
-                        strokeStyle: 'orange'
+                        styles: {
+                            fillStyle: 'navy',
+                            strokeStyle: 'orange'
+                        }
                     }),
 
                     velocity: new _c.draw.Vector(2.2, 2.5)
@@ -63,8 +67,10 @@ _c.app.views = _c.app.views || {};
                     circle: new _c.draw.Circle({
                         center: new _c.draw.Point(150, 75),
                         radius: this.RADIUS,
-                        fillStyle: 'gray',
-                        strokeStyle: 'navy'
+                        styles: {
+                            fillStyle: 'gray',
+                            strokeStyle: 'navy'
+                        }
                     }),
 
                     velocity: new _c.draw.Vector(1.2, 1.5)

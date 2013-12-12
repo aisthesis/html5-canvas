@@ -20,19 +20,21 @@ codeMelon.games = codeMelon.games || {};
                 radius: this.el.width / 4,
                 sides: 8,
                 angle: Math.PI / 2,
-                fillStyle: 'cornflowerblue',
-                strokeStyle: 'goldenrod',
-                lineWidth: 8
+                styles: {
+                    fillStyle: 'cornflowerblue',
+                    strokeStyle: 'goldenrod',
+                    lineWidth: 8
+                }
             });
 
             polygon.draw(this.CONTEXT);
-            polygon.lineWidth = 2;
-            polygon.strokeStyle = 'red';
+            polygon.styles.lineWidth = 2;
+            polygon.styles.strokeStyle = 'red';
             polygon.stroke(this.CONTEXT);
             polygon.radius = polygon.radius / 2;
             polygon.angle = Math.PI / 8;
             polygon.resetVertices();
-            polygon.fillStyle = 'saddlebrown';
+            polygon.styles.fillStyle = 'saddlebrown';
             polygon.fill(this.CONTEXT);
         },
 

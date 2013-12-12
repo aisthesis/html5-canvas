@@ -49,28 +49,36 @@ codeMelon.games = codeMelon.games || {};
                 new _c.draw.Circle({
                     center: new _c.draw.Point(130, 70),
                     radius: this.DRAGGABLE_POINT_RADIUS,
-                    fillStyle: this.END_POINT_FILL_STYLE,
-                    strokeStyle: this.END_POINT_STROKE_STYLE
+                    styles: {
+                        fillStyle: this.END_POINT_FILL_STYLE,
+                        strokeStyle: this.END_POINT_STROKE_STYLE
+                    }
                 }),
                 new _c.draw.Circle({
                     center: new _c.draw.Point(430, 270),
                     radius: this.DRAGGABLE_POINT_RADIUS,
-                    fillStyle: this.END_POINT_FILL_STYLE,
-                    strokeStyle: this.END_POINT_STROKE_STYLE
+                    styles: {
+                        fillStyle: this.END_POINT_FILL_STYLE,
+                        strokeStyle: this.END_POINT_STROKE_STYLE
+                    }
                 })
             ];
             this.ctrlPoints = [
                 new _c.draw.Circle({
                     center: new _c.draw.Point(130, 250),
                     radius: this.DRAGGABLE_POINT_RADIUS,
-                    fillStyle: this.CTRL_POINT_FILL_STYLE,
-                    strokeStyle: this.CTRL_POINT_STROKE_STYLE
+                    styles: {
+                        fillStyle: this.CTRL_POINT_FILL_STYLE,
+                        strokeStyle: this.CTRL_POINT_STROKE_STYLE
+                    }
                 }),
                 new _c.draw.Circle({
                     center: new _c.draw.Point(450, 70),
                     radius: this.DRAGGABLE_POINT_RADIUS,
-                    fillStyle: this.CTRL_POINT_FILL_STYLE,
-                    strokeStyle: this.CTRL_POINT_STROKE_STYLE
+                    styles: {
+                        fillStyle: this.CTRL_POINT_FILL_STYLE,
+                        strokeStyle: this.CTRL_POINT_STROKE_STYLE
+                    }
                 })
             ];
             this.mousedown = {};

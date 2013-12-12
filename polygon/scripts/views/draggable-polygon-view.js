@@ -47,9 +47,11 @@ codeMelon.games = codeMelon.games || {};
                 radius: this.el.width / 8,
                 sides: 5,
                 angle: Math.PI / 2,
-                fillStyle: this.fillStyle,
-                strokeStyle: this.strokeStyle,
-                lineWidth: 4
+                styles: {
+                    fillStyle: this.fillStyle,
+                    strokeStyle: this.strokeStyle,
+                    lineWidth: 4
+                }
             });
             this.mousedown = {};
             this.dragging = false;

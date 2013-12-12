@@ -18,9 +18,11 @@ codeMelon.games = codeMelon.games || {};
             var circle = new _c.draw.Circle({
                     center: new _c.draw.Point(this.el.width / 2, this.el.height / 2),
                     radius: this.el.width / 4,
-                    fillStyle: 'cornflowerblue',
-                    strokeStyle: 'goldenrod',
-                    lineWidth: 8
+                    styles: {
+                        fillStyle: 'cornflowerblue',
+                        strokeStyle: 'goldenrod',
+                        lineWidth: 8
+                    }
                 });
 
             circle.draw(this.CONTEXT);
