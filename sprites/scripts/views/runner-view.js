@@ -19,7 +19,7 @@ _c.app.views = _c.app.views || {};
         },
 
         render: function() {
-            this.sprite.paint(this.context);
+            this.sprite.update(this.context, new Date()).paint(this.context);
         },
 
         setConstants: function(options) {
@@ -32,7 +32,7 @@ _c.app.views = _c.app.views || {};
             var _this = this;
 
             this.context = this.el.getContext('2d');
-            this.lastAdvance = 0;
+            this.lastAdvance = new Date();
             this.sprite = new _c.draw.Sprite({
                 drawable: new _c.draw.TileSet({
                     src: 'running-sprite-sheet.png',
@@ -40,7 +40,7 @@ _c.app.views = _c.app.views || {};
                         _this.el.height / 2).offset(_this.OFFSET),
                     onload: function(event) {
                         _this.render();
-                        _this.animate(0);
+                        _this.animate();
                     },
                     cells: [
                         { corner: new _c.draw.Point(0, 0), width: 47, height: 64 },
@@ -57,17 +57,22 @@ _c.app.views = _c.app.views || {};
 
                 paint: function(context) {
                     this.drawable.draw(context);
-                }
+                },
+
+                behaviors: [
+                    function(context, time) {
+                        if (time - _this.lastAdvance > _this.PAGEFLIP_INTERVAL) {
+                            this.drawable.advance();
+                            _this.lastAdvance = time;
+                            context.clearRect(0, 0, _this.el.width, _this.el.height);
+                        }
+                    }
+                ]
             });
         },
 
         animate: function(time) {
-            if (time - this.lastAdvance > this.PAGEFLIP_INTERVAL) {
-                this.sprite.drawable.advance();
-                this.lastAdvance = time;
-                this.context.clearRect(0, 0, this.el.width, this.el.height);
-                this.render();
-            }
+            this.render();
             requestAnimationFrame(this.animate);
         }
     });
