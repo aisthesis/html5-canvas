@@ -11,6 +11,8 @@ require.config({
         'ClockView': 'scripts/views/clock-view',
         'BombView': 'scripts/views/bomb-view',
         'RunnerView': 'scripts/views/runner-view',
+        'ExplosionContainerView': 'scripts/views/explosion-container-view',
+        'ExplosionView': 'scripts/views/explosion-view',
         'jquery': '../lib/jquery-2.0.3.min',
         'bootstrap': '../lib/bootstrap-3.0.0/js/bootstrap.min',
         'underscore': '../lib/underscore-1.5.2.min',
@@ -23,15 +25,19 @@ require.config({
         'ClockView': ['Backbone', 'draw'],
         'BombView': ['Backbone', 'draw'],
         'RunnerView': ['Backbone', 'draw'],
+        'ExplosionContainerView': ['Backbone', 'draw', 'ExplosionView'],
+        'ExplosionView': ['Backbone', 'draw'],
         'Backbone': ['underscore', 'jquery', 'draw'],
         'bootstrap': ['jquery']
     }
 });
 
 require(['jquery', 'bootstrap', 'underscore', 'Backbone', 'draw', 
-    'SimpleView', 'ClockView', 'BombView', 'RunnerView'], 
+    'SimpleView', 'ClockView', 'BombView', 'RunnerView', 'ExplosionContainerView',
+    'ExplosionView'], 
     function($, bootstrap, _, Backbone, draw, 
-        SimpleView, ClockView, BombView, RunnerView) {
+        SimpleView, ClockView, BombView, RunnerView, ExplosionContainerView,
+        ExplosionView) {
         'use strict';
         _c.app.main = {};
         _c.app.main.simpleView = new _c.app.views.SimpleView({
@@ -45,5 +51,8 @@ require(['jquery', 'bootstrap', 'underscore', 'Backbone', 'draw',
         }); 
         _c.app.main.runnerView = new _c.app.views.RunnerView({
             el: '#runner'
+        }); 
+        _c.app.main.explosionContainerView = new _c.app.views.ExplosionContainerView({
+            el: '#explosion-container'
         }); 
     });
