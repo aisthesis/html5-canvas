@@ -5,11 +5,16 @@ _c.app.views = _c.app.views || {};
 (function(views) {
     "use strict";
     views.ExplosionContainerView = Backbone.View.extend({
+        events: {
+            'click #light-fuse': 'handleLightFuse'
+        },
+
         initialize: function(options) {
             _.bindAll(this,
                 'render',
                 'setConstants',
-                'initMembers'
+                'initMembers',
+                'handleLightFuse'
             );
 
             this.setConstants(options);
@@ -29,6 +34,11 @@ _c.app.views = _c.app.views || {};
             this.explosionView = new _c.app.views.ExplosionView({
                 el: '#explosion'
             });
+        },
+
+        handleLightFuse: function(event) {
+            this.explosionView.ready = true;
+            this.explosionView.animate();
         }
     });
 })(_c.app.views);
