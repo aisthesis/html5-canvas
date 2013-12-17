@@ -55,10 +55,6 @@ _c.app.views = _c.app.views || {};
                     ]
                 }),
 
-                paint: function(context) {
-                    this.drawable.draw(context);
-                },
-
                 behaviors: [
                     function(context, time) {
                         if (time - _this.lastAdvance > _this.PAGEFLIP_INTERVAL) {

@@ -42,10 +42,6 @@ _c.app.views = _c.app.views || {};
             this.sprite = new _c.draw.Sprite({
                 drawable: new _c.draw.FrameSet(params),
 
-                paint: function(context) {
-                    this.drawable.draw(context);
-                },
-
                 behaviors: [
                     function(context, time) {
                         if (time - _this.lastAdvance > _this.PAGEFLIP_INTERVAL) {

@@ -1,5 +1,6 @@
-var codeMelon = codeMelon || {}; 
-codeMelon.games = codeMelon.games || {}; 
+var _c = _c || {};
+_c.app = _c.app || {};
+_c.app.views = _c.app.views || {};
 
 (function(_cg) {
     "use strict";
@@ -129,4 +130,4 @@ codeMelon.games = codeMelon.games || {};
             return new _c.draw.Point(_x - bbox.left, _y - bbox.top);
         }
     });
-})(codeMelon.games);
+})(_c.app.views);
