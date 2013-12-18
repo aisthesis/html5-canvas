@@ -7,7 +7,7 @@ require.config({
     baseUrl: '.',
 
     paths: {
-        'canvasView': 'scripts/views/canvas-view',
+        'bucketGameView': 'scripts/views/bucket-game-view',
         'jquery': '../lib/jquery-2.0.3.min',
         'bootstrap': '../lib/bootstrap-3.0.0/js/bootstrap.min',
         'underscore': '../lib/underscore-1.5.2.min',
@@ -16,17 +16,17 @@ require.config({
     },
 
     shim: {
-        'canvasView': ['Backbone'],
+        'bucketGameView': ['Backbone'],
         'Backbone': ['underscore', 'jquery'],
         'bootstrap': ['jquery']
     }
 });
 
-require(['jquery', 'bootstrap', 'underscore', 'Backbone', 'draw', 'canvasView'], 
-    function($, bootstrap, _, Backbone, draw, canvasView) {
+require(['jquery', 'bootstrap', 'underscore', 'Backbone', 'draw', 'bucketGameView'], 
+    function($, bootstrap, _, Backbone, draw, bucketGameView) {
         'use strict';
         _c.app.main = {};
-        _c.app.main.canvasView = new _c.app.views.CanvasView({
-            el: '#game-canvas'
+        _c.app.main.bucketGameView = new _c.app.views.BucketGameView({
+            el: '#bucket-game'
         }); 
     });
