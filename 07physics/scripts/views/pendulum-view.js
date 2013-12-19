@@ -65,10 +65,12 @@ _c.app.views = _c.app.views || {};
                         this.drawables.bob.center = this.points.bob;
                     },
 
-                    beforeDraw: function(context) {
-                        context.moveTo(this.points.pivot.x, this.points.pivot.y);
-                        context.lineTo(this.points.bob.x, this.points.bob.y);
-                        context.stroke();
+                    draw: {
+                        before: function(context) {
+                            context.moveTo(this.points.pivot.x, this.points.pivot.y);
+                            context.lineTo(this.points.bob.x, this.points.bob.y);
+                            context.stroke();
+                        }
                     }
                 })
             });
