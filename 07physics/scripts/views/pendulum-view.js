@@ -11,22 +11,28 @@ _c.app.views = _c.app.views || {};
                 'setConstants',
                 'initMembers',
                 'setDefaultStyles',
-                'animate'
+                'animate',
+                'updateBob'
             );
 
             this.setConstants(options);
             this.initMembers(options);
             this.setDefaultStyles(this.context);
-            this.render();
+            this.animate();
         },
 
         render: function() {
-            this.pendulum.paint(this.context);
+            var _this = this;
+
+            this.context.clearRect(0, 0, this.el.width, this.el.height);
+            this.pendulum.update(this.context).paint(this.context);
         },
 
         setConstants: function(options) {
-            this.GRAVITY = 9.81 / 100; // m/s/ms
-            this.PIXELS_PER_METER = this.el.width / 10;
+            this.GRAVITY = 0.001;
+            this.LENGTH = this.el.height - 64;
+            this.SQRT_G_OVER_L = Math.sqrt(this.GRAVITY / this.LENGTH);
+            this.START_ANGLE = Math.PI / 4;
         },
 
         initMembers: function(options) {
@@ -53,14 +59,11 @@ _c.app.views = _c.app.views || {};
                         })
                     },
 
-                    config: {
-                        length: _this.el.height - 64
-                    },
-
                     keys: ['pivot', 'bob'],
 
                     finish: function() {
-                        this.points.bob.y = this.points.pivot.y + this.config.length; 
+                        this.points.bob.y = this.points.pivot.y + _this.LENGTH * Math.cos(_this.START_ANGLE);
+                        this.points.bob.x = this.points.pivot.x + _this.LENGTH * Math.sin(_this.START_ANGLE);
                         this.drawables.pivot.center = this.points.pivot;
                         this.drawables.bob.center = this.points.bob;
                     },
@@ -72,8 +75,20 @@ _c.app.views = _c.app.views || {};
                             context.stroke();
                         }
                     }
-                })
+                }),
+
+                behaviors: [
+                    function(context, time) {
+                        var _points = this.drawable.points;
+
+                        _points.bob.y = _points.pivot.y + _this.LENGTH * Math.cos(_this.angle);
+                        _points.bob.x = _points.pivot.x + _this.LENGTH * Math.sin(_this.angle);
+                    }
+                ]
             });
+
+            this.startTime = 0;
+            this.angle = this.START_ANGLE;
         },
 
         setDefaultStyles: function(context) {
@@ -83,8 +98,28 @@ _c.app.views = _c.app.views || {};
         },
 
         animate: function(time) {
+            var elapsed = 0;
+
+            if (typeof time === 'undefined') {
+                return requestAnimationFrame(this.animate);
+            }
+            if (this.startTime === 0) {
+                this.startTime = time;
+            }
+            else {
+                elapsed = time - this.startTime;
+                this.angle = this.START_ANGLE * Math.cos(this.SQRT_G_OVER_L * elapsed);
+            }
             this.render();
             requestAnimationFrame(this.animate);
+        },
+
+        updateBob: function(angle) {
+            var _points = this.pendulum.drawable;
+
+            _points.bob.y = _points.pivot.y + this.LENGTH * Math.cos(angle);
+            _points.bob.x = _points.pivot.x + this.LENGTH * Math.sin(angle);
+
         }
     });
 })(_c.app.views);
