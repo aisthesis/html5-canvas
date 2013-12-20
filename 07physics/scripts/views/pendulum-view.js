@@ -70,6 +70,7 @@ _c.app.views = _c.app.views || {};
 
                     draw: {
                         before: function(context) {
+                            context.beginPath();
                             context.moveTo(this.points.pivot.x, this.points.pivot.y);
                             context.lineTo(this.points.bob.x, this.points.bob.y);
                             context.stroke();
